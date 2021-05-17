@@ -1,2 +1,5 @@
-# Binance_Charts
- Using mplfinance, multiple charts are plotted and updated every 5 seconds using the binance API
+# Setup
+This code works like most of my other Binance related codes.
+
+1. Find your Binance API keys and put them in the keys.py file
+2. Make sure BinanceData.py and keys.py are in the same directory

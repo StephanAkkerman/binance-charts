@@ -13,7 +13,7 @@ At the moment these coins are "BTCUSDT", "ETHUSDT", "XRPUSDT", "BNBUSDT", "DOGEU
 As stated in the description, this project uses mplfinance. Unfortunately, this is not the most efficient library for updating charts. The current refresh rate is set at 5 seconds, so all the charts are updated every 5 seconds. This can be set to a lower value, but that could lead to performance issues, for instance where the charting program freezes.
 
 # Important
-Your assets are only recognized if you have made a stop loss order for them. Check out my trailing stop loss implementation, using the Binance API https://github.com/StephanAkkerman/Binance_Trailing_Stop_Loss. 
+The code uses USDT as base pair, if you would like to use something else, for instance BTC change the default list and the workings of how the holdings are gotten.
 
 # Screenshot
 ![Image of screenshot](https://github.com/StephanAkkerman/Binance_Charts/blob/main/Pics/Screenshot.png)

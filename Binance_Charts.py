@@ -19,22 +19,33 @@ import keys
 client = Client(keys.public_key, keys.private_key)
 
 # Get current holdings and save in owned
-# Returns list of dictionary of all the orders that are open
-open_order = client.get_open_orders()
-   
-# Convert it to a pandas dataframe
-orders_df = pd.DataFrame(open_order)
+owned = []
 
-# Filter on 'type': 'STOP_LOSS_LIMIT', take only the symbols, convert it to list
-try:
-    owned = orders_df[orders_df['type']=='STOP_LOSS_LIMIT']['symbol'].tolist()
-# In case there are no active stop_loss_limit orders
-except Exception as e: 
-    pass
+# Fill owned list
+assets = (client.get_account()).get('balances')
+for asset in assets:
+    sym = asset.get('asset')
+    available = float(asset.get('free')) + float(asset.get('locked'))
+    # Have more than 0 available
+    if available > 0.001 :
+        if sym != 'USDT':
+            symUSDT = sym + 'USDT' 
+            try:
+                # Keep tracks of assets worth more than $10 in USDT
+                if available * float(client.get_symbol_ticker(symbol = symUSDT)['price']) > 10:
+                    owned.append(symUSDT)
+            except Exception as e: 
+                #Print out all the error information
+                print("Error adding: " + symUSDT)
 
 # === Default list ===
 # List to use when owned consists of less than 9 items
-default = ["BTCUSDT", "ETHUSDT", "XRPUSDT", "BNBUSDT", "DOGEUSDT", "ADAUSDT", "DOTUSDT"]
+default = ["BTCUSDT", "ETHUSDT", "XRPUSDT", "BNBUSDT", "DOGEUSDT", "ADAUSDT", "DOTUSDT", "BCHUSDT", "LTCUSDT"]
+
+# Add the default coins to owned
+for sym in default:
+    if sym not in owned:
+        owned.append(sym)
 
 # =========================
 # =====   PLOTTING    =====
@@ -72,19 +83,10 @@ def animate(counter):
 
     # Latest 100 candles
     i = 0
-    default_counter = 0
 
     for ax in axs:
 
-        try:
-            symbol = owned[i]
-
-        # List index out of range
-        # Use default list
-        except Exception as e: 
-            if default[default_counter] not in owned:
-                symbol = default[default_counter]
-            default_counter += 1
+        symbol = owned[i]
 
         data = fetchData(symbol, 1, '15m')[-100:]
 

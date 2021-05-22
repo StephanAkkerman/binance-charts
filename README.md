@@ -7,13 +7,15 @@ This code works like most of my other Binance related codes.
 # Use case
 After doing the setup, the code will show your spot holdings in the same style as Tradingview.
 9 charts will be created, if you have less than 9 different spot holdings the other charts will be filled up with the most popular coins.
-At the moment these coins are "BTCUSDT", "ETHUSDT", "XRPUSDT", "BNBUSDT", "DOGEUSDT", "ADAUSDT", "DOTUSDT", "BCHUSDT", "LTCUSDT". If you like to use other coins as default, then change the default list on line 37.
+At the moment these coins are "BTCUSDT", "ETHUSDT", "XRPUSDT", "BNBUSDT", "DOGEUSDT", "ADAUSDT", "DOTUSDT", "BCHUSDT", "LTCUSDT". If you like to use other coins as default, then change the default list on line 43.
 
 # Updating the charts
 As stated in the description, this project uses mplfinance. Unfortunately, this is not the most efficient library for updating charts. The current refresh rate is set at 5 seconds, so all the charts are updated every 5 seconds. This can be set to a lower value, but that could lead to performance issues, for instance where the charting program freezes.
 
 # Important
-The code uses USDT as base pair, if you would like to use something else, for instance BTC change the default list and the workings of how the holdings are gotten.
+The code uses USDT as base pair. If you would like to use something else, for instance BTC, change the default list and the workings of how the holdings are gotten.
+
+At the moment future and margin holdings are not supported, this might be implemented in the future.
 
 # Screenshot
 ![Image of screenshot](https://github.com/StephanAkkerman/Binance_Charts/blob/main/Pics/Screenshot.png)

@@ -1,12 +1,11 @@
+# Third party libraries
 import matplotlib.pyplot as plt
-import mplfinance as mpf
-import pandas as pd
-import numpy as np
-import time
 from matplotlib.animation import FuncAnimation
+import mplfinance as mpf
+import numpy as np
 from binance.client import Client
 
-# Dont forget to place these in the same directory
+# Local dependencies
 from BinanceData import fetchData
 import keys
 
@@ -79,7 +78,7 @@ for x in range(1,10):
 #https://stackoverflow.com/questions/60599812/how-can-i-customize-mplfinance-plot
 
 # This function gets called every x ms
-def animate(counter):
+def animate():
 
     # Latest 100 candles
     i = 0

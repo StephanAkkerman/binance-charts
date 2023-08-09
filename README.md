@@ -5,6 +5,9 @@
 
 ---
 
+> **note**
+> I have added this implementation to my more advanced charting repo which you can find [here](https://github.com/StephanAkkerman/live-binance-charts)
+
 ## Features
 After doing the setup, the code will show your spot holdings in the same style as Tradingview.
 9 charts will be created, if you have less than 9 different spot holdings the other charts will be filled up with the most popular coins.
